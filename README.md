@@ -12,7 +12,9 @@ An elegant and high-performance iOS application that fetches and displays images
 ---
 
 ### 📸 Preview  
-![App Preview](https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png)  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png" alt="App Preview" width="400">
+</p>
 
 ---
 
@@ -28,7 +30,7 @@ An elegant and high-performance iOS application that fetches and displays images
 ### 🔧 Installation  
 1. **Clone the repository:**  
    ```bash
-   git clone https://github.com/YourUsername/YourRepoName.git
+   git clone https://github.com/Muniyaraj-ios/PhotoDownloader.git
    
 ---
 
@@ -54,7 +56,7 @@ Integrating third-party APIs (Pexels) seamlessly.
 
 I'm Munish, an iOS software engineer with 3+ years of hands-on experience, specializing in creating performant and scalable mobile applications. In this project, I focused on advanced networking and caching strategies to enhance user experience.
 
-Feel free to reach out or connect with me on LinkedIn if you have any questions or suggestions!
+Feel free to reach out or connect with me on [LinkedIn](https://in.linkedin.com/in/muniyaraj-ios) if you have any questions or suggestions!
    
 ---
 

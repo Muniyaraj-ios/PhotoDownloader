@@ -12,9 +12,7 @@ actor PhotoModelFileManager: ImageFileCacheService{
     
     static let instance = PhotoModelFileManager()
     private let folder_name = "downloaded_photos"
-    
-    private var isMemoryCache = NSCache<NSString, UIImage>()
-        
+            
     private init(){
         Task{
             await createFolderIfneeded()
@@ -47,45 +45,29 @@ actor PhotoModelFileManager: ImageFileCacheService{
 
 extension PhotoModelFileManager{
     
-    func add(key: String, value: UIImage) async {
+    func add(key: String, value: UIImage) async  throws{
         
-        // save in cache
-        isMemoryCache.setObject(value, forKey: key as NSString)
-        
-        // save in disk
         guard let data = value.pngData(), let url = getImagePath(key: key) else{ return }
         
-        do{
-            try data.write(to: url)
-        }catch let error{
-            print("❌ Error saving on image : \(error)")
-        }
+        try data.write(to: url)
     }
     
     func get(key: String) async -> UIImage? {
-        if let imageCache = isMemoryCache.object(forKey: key as NSString){
-            return imageCache
-        }
+        
         guard let url = getImagePath(key: key), FileManager.default.fileExists(atPath: url.path) else{ return nil }
-        if let image = UIImage(contentsOfFile: url.path(percentEncoded: true)){ // for save memory cache for faster
-            isMemoryCache.setObject(image, forKey: key as NSString)
-            return image
-        }
-        return nil
+        
+        guard let image = UIImage(contentsOfFile: url.path(percentEncoded: true)) else{ return nil }
+        
+        return image
     }
     
-    func remove(with key: String) async {
+    func remove(with key: String) async throws{
         guard let url = getImagePath(key: key), FileManager.default.fileExists(atPath: url.path) else{ return }
         
-        do{
-            try FileManager.default.removeItem(at: url)
-            print("✅ removed an image from cache")
-        }catch let error{
-            print("❌ Error removing on image : \(error)")
-        }
+        try FileManager.default.removeItem(at: url)
     }
     
-    func clearAllCache() async {
+    func clearAllCache() async throws{
         guard let directoryPath = getFolderPath(), FileManager.default.fileExists(atPath: directoryPath.path) else{ return }
         
         do{
@@ -95,7 +77,7 @@ extension PhotoModelFileManager{
                 try FileManager.default.removeItem(at: fullPath)
             }
         }catch let error{
-            print("❌ Error removing on images : \(error)")
+            throw error
         }
     }
 }

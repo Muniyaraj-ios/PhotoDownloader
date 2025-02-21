@@ -50,7 +50,11 @@ class PhotoLoadingViewModel: ObservableObject{
             if let returnedImage{
                 Task.detached(priority: .background){ [weak self] in
                     guard let self = self else{ return }
-                    await photoCacheManager.add(key: photoData.id.description, value: returnedImage)
+                    do{
+                        try await photoCacheManager.add(key: photoData.id.description, value: returnedImage)
+                    }catch let error{
+                        print("got error get image : \(error)")
+                    }
                 }
             }
             

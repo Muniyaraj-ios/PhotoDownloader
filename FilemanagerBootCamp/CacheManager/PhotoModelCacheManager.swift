@@ -21,7 +21,7 @@ actor PhotoModelCacheManager: ImageCacheService{
     
     private init(){}
     
-    func add(key: String, value: UIImage) async{
+    func add(key: String, value: UIImage) async throws{
         photoCache.setObject(value, forKey: key as NSString)
     }
     
@@ -29,22 +29,22 @@ actor PhotoModelCacheManager: ImageCacheService{
         return photoCache.object(forKey: key as NSString)
     }
     
-    func remove(with key: String) async {
+    func remove(with key: String) async  throws{
         photoCache.removeObject(forKey: key as NSString)
     }
     
-    func clearAllCache() async{
+    func clearAllCache() async throws{
         photoCache.removeAllObjects()
     }
 }
 
 
 protocol ImageCacheService{
-    func add(key: String, value: UIImage) async
+    func add(key: String, value: UIImage) async throws
     func get(key: String) async -> UIImage?
     
-    func remove(with key: String) async
-    func clearAllCache() async
+    func remove(with key: String) async throws
+    func clearAllCache() async throws
 }
 
 protocol ImageFileCacheService: ImageCacheService{

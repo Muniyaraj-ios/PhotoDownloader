@@ -14,9 +14,9 @@ An elegant and high-performance iOS application that fetches and displays images
 ### 📸 Preview  
 ### 📸 Preview  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview1.png" alt="Preview 1" width="250">
-  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview2.png" alt="Preview 2" width="250">
-  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview3.png" alt="Preview 3" width="250">
+  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png" alt="Preview 1" width="250">
+  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png" alt="Preview 2" width="250">
+  <img src="https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png" alt="Preview 3" width="250">
 </p>
 
 

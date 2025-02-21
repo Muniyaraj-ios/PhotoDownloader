@@ -7,6 +7,7 @@ A beautifully designed iOS application that fetches and displays images from the
 Modern Concurrency with Swift: Utilizes async/await for smooth and responsive networking.
 Efficient Image Caching: Combines NSCache for in-memory caching and FileManager for persistent storage, ensuring fast image loading and offline access.
 Elegant UI Design: A visually appealing grid layout with high-resolution images.
+
 API Integration: Fetches stunning images from the Pexels API.
 
 ⚙️ Technologies Used
@@ -55,5 +56,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ⭐️ Show Your Support
 
 If you found this project helpful or interesting, please give it a star ⭐️ on GitHub!
-
-This README structure is designed to attract attention and provide a clear overview of the project's features and technical aspects. If you want to make any adjustments or add more details, let me know!

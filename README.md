@@ -29,31 +29,41 @@ An elegant and high-performance iOS application that fetches and displays images
 1. **Clone the repository:**  
    ```bash
    git clone https://github.com/YourUsername/YourRepoName.git
+   
+---
 
-🧩 Architecture
+### 🧩 Architecture
 
 The project follows a clean architecture pattern for maintainability and scalability.
 
-Networking Layer: Handles all API requests and data parsing.
-Caching Layer: Combines NSCache and FileManager for optimal performance.
-UI Layer: Designed with a smooth and responsive layout, showcasing high-resolution images.
+- **Networking Layer:** Handles all API requests and data parsing.
+- **Caching Layer:** Combines NSCache and FileManager for optimal performance.
+- **UI Layer:** Designed with a smooth and responsive layout, showcasing high-resolution images.
+   
+---
 
-📚 Learning Points
+### 📚 Learning Points
 
 Implementing modern concurrency with async/await in Swift.
 Efficient image caching using NSCache and FileManager.
 Integrating third-party APIs (Pexels) seamlessly.
+   
+---
 
-👨‍💻 About the Developer
+### 👨‍💻 About the Developer
 
 I'm Munish, an iOS software engineer with 3+ years of hands-on experience, specializing in creating performant and scalable mobile applications. In this project, I focused on advanced networking and caching strategies to enhance user experience.
 
 Feel free to reach out or connect with me on LinkedIn if you have any questions or suggestions!
+   
+---
 
-📜 License
+### 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+   
+---
 
-⭐️ Show Your Support
+### ⭐️ Show Your Support
 
 If you found this project helpful or interesting, please give it a star ⭐️ on GitHub!

@@ -1,33 +1,34 @@
-# PhotoDownloader
+# 📸 Photo Downloader  
+An elegant and high-performance iOS application that fetches and displays images from the Pexels API. Built using **modern concurrency** with Swift, this project demonstrates advanced networking and efficient image caching techniques for a seamless user experience.  
 
-A beautifully designed iOS application that fetches and displays images from the Pexels API, providing a seamless and fast user experience. Built using modern concurrency with Swift, this project showcases advanced networking techniques and efficient image caching strategies.
+---
 
-🚀 Features
+### 🚀 Features  
+- **Modern Concurrency with Swift:** Utilizes `async/await` for efficient and responsive networking.  
+- **Optimized Image Caching:** Combines `NSCache` for in-memory caching and `FileManager` for persistent storage, ensuring fast image loading and offline access.  
+- **SwiftUI User Interface:** Designed with SwiftUI for a smooth, dynamic, and visually appealing grid layout.  
+- **API Integration:** Fetches stunning images from the Pexels API.  
 
-Modern Concurrency with Swift: Utilizes async/await for smooth and responsive networking.
-Efficient Image Caching: Combines NSCache for in-memory caching and FileManager for persistent storage, ensuring fast image loading and offline access.
-Elegant UI Design: A visually appealing grid layout with high-resolution images.
+---
 
-API Integration: Fetches stunning images from the Pexels API.
+### 📸 Preview  
+![App Preview](https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/PhotoDownloader/Preview.png)  
 
-⚙️ Technologies Used
+---
 
-Swift 5.7+ with modern concurrency (async/await)
-NSCache for in-memory image caching
-FileManager for local storage
-URLSession for efficient network calls
-SwiftUI for a smooth and dynamic user interface
+### ⚙️ Technologies Used  
+- **Swift 5.7+** with modern concurrency (`async/await`)  
+- **NSCache** for efficient in-memory image caching  
+- **FileManager** for persistent local storage  
+- **URLSession** for responsive network calls  
+- **SwiftUI** for a dynamic and elegant user interface  
 
-📸 Screenshots
+---
 
-(Include some high-quality screenshots of the app in action)
-
-🔧 Installation
-
-Clone the repository:
-git clone https://github.com/YourUsername/YourRepoName.git
-Open the project in Xcode.
-Run the project on a simulator or a real device.
+### 🔧 Installation  
+1. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/YourUsername/YourRepoName.git
 
 🧩 Architecture
 

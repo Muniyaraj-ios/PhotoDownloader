@@ -17,16 +17,16 @@ class PhotoListViewModel: ObservableObject{
     
     init(service: NetworkService = NetworkManager()) {
         self.service = service
-        Task.detached(priority: .background, operation: { [weak self] in
-            await self?.getPhotoLists()
-        })
+        Task{
+            await getPhotoLists()
+        }
     }
     
     @MainActor
     func getPhotoLists() async{
         isLoading = true
         Task{
-            let photo_url = "https://run.mocky.io/v3/d5914d43-266d-4aa7-acc3-305154cbe0a3"
+            let photo_url = "https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/Photos/products.json"
             do{
                 let photo_response: PhotoResponseModel = try await service.performRequest(urlString: photo_url)
                 isLoading = false

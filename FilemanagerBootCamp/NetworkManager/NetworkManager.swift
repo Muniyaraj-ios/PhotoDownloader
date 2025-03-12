@@ -33,6 +33,10 @@ protocol NetworkService{
     func performRequest<T: Codable>(urlString: String) async throws -> T
 }
 
+extension NetworkService where Self == NetworkManager{
+    static var `default`: Self{ NetworkManager() }
+}
+
 protocol DownloadImageService{
     func downloadImage(from urlString: String) async throws -> UIImage?
 }

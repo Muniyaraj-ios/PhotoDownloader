@@ -12,7 +12,7 @@ actor PhotoModelFileManager: ImageFileCacheService{
     
     static let instance = PhotoModelFileManager()
     private let folder_name = "downloaded_photos"
-            
+
     private init(){
         Task{
             await createFolderIfneeded()

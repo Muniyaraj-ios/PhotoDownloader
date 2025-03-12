@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 
+
 class PhotoLoadingViewModel: ObservableObject{
     
-    @MainActor @Published var image: UIImage? = nil
+    @Published var image: UIImage? = nil
     @Published var isLoading: Bool = false
     
     let photoData: PhotoModel
@@ -19,22 +20,20 @@ class PhotoLoadingViewModel: ObservableObject{
         
     private let photoCacheManager: ImageCacheService
     
+    @MainActor
     init(service: DownloadImageService = DownloadImageManager(), photoCacheManager: ImageCacheService = PhotoModelCacheManager.instance, photoData: PhotoModel) {
         self.photoData = photoData
         self.service = service
         self.photoCacheManager = photoCacheManager
-        
         self.getImageFromExisting()
     }
     
+    @MainActor
     func getImageFromExisting(){
-        Task.detached(priority: .background){ [weak self] in
-            guard let self = self else{ return }
+        Task(priority: .low){
             if let fileCacheImage = await photoCacheManager.get(key: photoData.id.description){
                 print("photo feteched from cache...")
-                await MainActor.run { [weak self] in
-                    self?.image = fileCacheImage
-                }
+                image = fileCacheImage
             }else{
                 await downloadImage()
             }
@@ -44,38 +43,36 @@ class PhotoLoadingViewModel: ObservableObject{
     @MainActor
     func downloadImage() async{
         isLoading = true
-        do{
-            print("photo downloading started...")
-            let returnedImage = try await service.downloadImage(from: photoData.src.small)
-            if let returnedImage{
-                Task.detached(priority: .background){ [weak self] in
-                    guard let self = self else{ return }
+        Task(priority: .low){
+            do{
+                print("photo downloading started... : \(Task.currentPriority)")
+                let returnedImage = try await service.downloadImage(from: photoData.src.small)
+                if let returnedImage{
                     do{
                         try await photoCacheManager.add(key: photoData.id.description, value: returnedImage)
                     }catch let error{
                         print("got error get image : \(error)")
                     }
                 }
-            }
-            
-            image = returnedImage
-            isLoading = false
-        }catch let error{
-            isLoading = false
-            if let error_asImage = error as? ImageDownloaderError{
-                switch error_asImage {
-                case .badURL:
-                    print("download image catch error : Invalid URL")
-                    break
-                case .badResponse(let statusCode):
-                    print("download image catch error : Bad Status Code \(statusCode)")
-                    break
-                case .invalidImageData:
-                    print("download image catch error : Invalid Image data")
-                    break
+                image = returnedImage
+                isLoading = false
+            }catch let error{
+                isLoading = false
+                if let error_asImage = error as? ImageDownloaderError{
+                    switch error_asImage {
+                    case .badURL:
+                        print("download image catch error : Invalid URL")
+                        break
+                    case .badResponse(let statusCode):
+                        print("download image catch error : Bad Status Code \(statusCode)")
+                        break
+                    case .invalidImageData:
+                        print("download image catch error : Invalid Image data")
+                        break
+                    }
+                }else{
+                    print("download image catch error : \(error)")
                 }
-            }else{
-                print("download image catch error : \(error)")
             }
         }
     }

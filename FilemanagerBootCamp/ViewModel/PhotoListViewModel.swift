@@ -15,17 +15,16 @@ class PhotoListViewModel: ObservableObject{
     @Published public var isLoading: Bool = false
     @Published public var photoValues: [PhotoModel] = []
     
-    init(service: NetworkService = NetworkManager()) {
+    @MainActor
+    init(service: NetworkService = .default) {
         self.service = service
-        Task{
-            await getPhotoLists()
-        }
+        getPhotoLists()
     }
     
     @MainActor
-    func getPhotoLists() async{
+    func getPhotoLists(){
         isLoading = true
-        Task{
+        Task(priority: .low){
             let photo_url = "https://raw.githubusercontent.com/Muniyaraj-ios/assets/main/Photos/products.json"
             do{
                 let photo_response: PhotoResponseModel = try await service.performRequest(urlString: photo_url)
